@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FW Comunicação</title>
   <style>
     * {
@@ -12,34 +12,43 @@
       font-family: Arial, sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
+      min-height: 100vh;
       background: #07070a;
       color: white;
       line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
     .container {
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 20px;
     }
 
     header {
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
     }
 
     .header-content {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
+      flex-direction: column;
       gap: 20px;
+      padding: 20px 0;
     }
 
     .logo-area {
@@ -51,30 +60,34 @@
     .logo-area img {
       height: 56px;
       width: auto;
+      object-fit: contain;
     }
 
-    .logo-text h3 {
+    .logo-area h3 {
       font-size: 14px;
-      letter-spacing: 4px;
+      font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 0.35em;
     }
 
-    .logo-text p {
-      font-size: 12px;
-      color: #a1a1aa;
+    .logo-area p {
       margin-top: 4px;
+      font-size: 14px;
+      color: #a1a1aa;
     }
 
     .btn {
       display: inline-block;
-      background: #7c3aed;
-      color: white;
-      text-decoration: none;
-      padding: 16px 28px;
-      border-radius: 14px;
-      font-weight: bold;
-      transition: 0.3s;
       border: none;
+      border-radius: 18px;
+      background: #7c3aed;
+      padding: 16px 32px;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      transition: 0.3s;
+      cursor: pointer;
     }
 
     .btn:hover {
@@ -82,212 +95,357 @@
     }
 
     .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.1);
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.1);
     }
 
     .btn-outline:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(139,92,246,0.4);
+      border-color: rgba(139, 92, 246, 0.4);
+      background: rgba(255, 255, 255, 0.05);
     }
 
     .hero {
-      padding: 100px 0;
-      background: radial-gradient(circle at top, rgba(139,92,246,0.18), transparent 35%);
+      background: radial-gradient(circle at top, rgba(139, 92, 246, 0.18), transparent 35%);
+      padding: 64px 0;
     }
 
     .tag {
       display: inline-block;
-      padding: 10px 16px;
+      border: 1px solid rgba(139, 92, 246, 0.3);
       border-radius: 999px;
-      border: 1px solid rgba(139,92,246,0.3);
-      background: rgba(139,92,246,0.1);
+      background: rgba(139, 92, 246, 0.1);
+      padding: 10px 16px;
       color: #ddd6fe;
       font-size: 12px;
-      letter-spacing: 3px;
       text-transform: uppercase;
+      letter-spacing: 0.3em;
     }
 
     .hero-top-text {
       margin-top: 24px;
       color: #ddd6fe;
-      text-transform: uppercase;
-      letter-spacing: 3px;
       font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
     }
 
     h1 {
       margin-top: 24px;
-      font-size: 64px;
-      line-height: 1.1;
-      max-width: 900px;
+      max-width: 1000px;
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.03;
+      letter-spacing: -0.04em;
     }
 
-    .hero p {
+    .hero-description {
       margin-top: 24px;
-      max-width: 800px;
-      font-size: 22px;
+      max-width: 760px;
       color: #d4d4d8;
+      font-size: 20px;
+      line-height: 1.7;
     }
 
     .hero-buttons {
       display: flex;
+      flex-direction: column;
       gap: 16px;
       margin-top: 40px;
-      flex-wrap: wrap;
     }
 
-    .info-list {
+    .hero-info {
       margin-top: 32px;
       color: #a1a1aa;
       font-size: 14px;
     }
 
-    .info-list p {
+    .hero-info p + p {
       margin-top: 8px;
-      font-size: 14px;
     }
 
     section {
-      padding: 80px 0;
+      padding: 56px 0;
     }
 
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: 24px;
     }
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       gap: 16px;
     }
 
     .card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.03);
       padding: 32px;
     }
 
     .card h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
+      font-size: 2.3rem;
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
     }
 
     .card p {
+      margin-top: 16px;
       color: #d4d4d8;
-      margin-bottom: 16px;
+      font-size: 18px;
+      line-height: 1.7;
     }
 
     .item-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(139,92,246,0.2);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 24px;
+      color: #e4e4e7;
+      font-size: 20px;
+    }
+
+    .item-card-dark {
+      border: 1px solid rgba(139, 92, 246, 0.2);
       border-radius: 18px;
-      padding: 20px;
-      color: white;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 16px;
+      color: #e4e4e7;
+      font-size: 16px;
     }
 
     .section-title {
-      font-size: 42px;
-      margin-bottom: 32px;
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .packages {
+      margin-top: 40px;
     }
 
     .package-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(139,92,246,0.2);
-      border-radius: 28px;
+      border-radius: 32px;
       padding: 32px;
-      box-shadow: 0 0 30px rgba(139,92,246,0.08);
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.08);
+    }
+
+    .package-card.essencial {
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .package-card.autoridade {
+      border: 1px solid rgba(217, 70, 239, 0.3);
+      background: linear-gradient(180deg, rgba(217, 70, 239, 0.08), rgba(255, 255, 255, 0.03));
     }
 
     .package-card h3 {
-      font-size: 30px;
+      font-size: 2rem;
+      font-weight: 700;
     }
 
     .price {
-      margin-top: 12px;
-      font-size: 38px;
-      font-weight: bold;
+      margin-top: 16px;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .package-card.essencial .price {
+      color: #c4b5fd;
+    }
+
+    .package-card.autoridade .price {
+      color: #f0abfc;
+    }
+
+    .package-card p {
+      margin-top: 24px;
+      color: #d4d4d8;
+      font-size: 18px;
+      line-height: 1.7;
     }
 
     .package-card ul {
-      margin-top: 24px;
+      margin-top: 32px;
       list-style: none;
     }
 
     .package-card li {
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       color: #e4e4e7;
+      font-size: 18px;
     }
 
     .cta-final {
-      background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(10,10,10,0.9));
-      border: 1px solid rgba(139,92,246,0.2);
+      border: 1px solid rgba(139, 92, 246, 0.2);
       border-radius: 32px;
-      padding: 60px 40px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(10, 10, 10, 0.9));
+      padding: 32px;
       text-align: center;
     }
 
     .cta-final h2 {
-      font-size: 48px;
-      margin: 20px 0;
+      margin-top: 24px;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
     }
 
     .cta-final p {
+      max-width: 760px;
+      margin: 24px auto 0;
       color: #d4d4d8;
-      max-width: 800px;
-      margin: 12px auto;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .cta-final .subtext {
+      margin-top: 16px;
+      color: #a1a1aa;
+    }
+
+    .cta-final .btn {
+      margin-top: 32px;
     }
 
     footer {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 30px;
-      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 32px 20px;
       color: #a1a1aa;
       font-size: 14px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .header-content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .header-btn {
+        width: auto;
+      }
+
+      h1 {
+        font-size: 5.5rem;
+      }
+
+      .hero-buttons {
+        flex-direction: row;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .section-title {
+        font-size: 3rem;
+      }
+
+      .card h2 {
+        font-size: 3rem;
+      }
+
+      .package-card h3 {
+        font-size: 3rem;
+      }
+
+      .price {
+        font-size: 3.75rem;
+      }
+
+      .cta-final {
+        padding: 56px;
+      }
+
+      .cta-final h2 {
+        font-size: 4.2rem;
+      }
     }
 
     @media (max-width: 900px) {
       h1 {
-        font-size: 44px;
+        font-size: 3.6rem;
+        line-height: 1.02;
       }
 
-      .grid-2,
-      .grid-3 {
-        grid-template-columns: 1fr;
+      .section-title {
+        font-size: 2.2rem;
+        line-height: 1.15;
       }
 
-      .header-content {
-        flex-direction: column;
-        align-items: flex-start;
+      .cta-final h2 {
+        font-size: 2.8rem;
+        line-height: 1.15;
       }
 
-      .hero-buttons {
-        flex-direction: column;
+      .price {
+        font-size: 3.2rem;
+        line-height: 1.1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      h1 {
+        font-size: 2.9rem;
       }
 
-      .btn {
-        width: 100%;
-        text-align: center;
+      .hero-description {
+        font-size: 18px;
+      }
+
+      .section-title,
+      .card h2 {
+        font-size: 2rem;
+      }
+
+      .package-card h3 {
+        font-size: 1.9rem;
+      }
+
+      .price {
+        font-size: 2.8rem;
+      }
+
+      .cta-final h2 {
+        font-size: 2.4rem;
+      }
+
+      .item-card {
+        font-size: 18px;
       }
     }
   </style>
 </head>
 <body>
-
   <header>
     <div class="container header-content">
       <div class="logo-area">
-        <img src="https://i.imgur.com/DCIcnhI.png" alt="FW Comunicação">
-        <div class="logo-text">
+        <img src="https://i.imgur.com/DCIcnhI.png" alt="FW Comunicação" />
+        <div>
           <h3>FW Comunicação</h3>
           <p>Conteúdo, posicionamento e resultado</p>
         </div>
       </div>
 
-      <a class="btn" href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação" target="_blank">
+      <a
+        class="btn header-btn"
+        href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação"
+        target="_blank"
+      >
         Solicitar orçamento
       </a>
     </div>
@@ -297,20 +455,24 @@
     <div class="container">
       <span class="tag">Produção de conteúdo</span>
 
-      <div class="hero-top-text">
+      <p class="hero-top-text">
         Conteúdo que gera autoridade, percepção de valor e vendas
-      </div>
+      </p>
 
       <h1>
         Conteúdo premium para marcas que querem vender mais, parecer maiores e ser lembradas.
       </h1>
 
-      <p>
+      <p class="hero-description">
         Fotos e vídeos estratégicos para redes sociais, anúncios, posicionamento e fortalecimento da marca.
       </p>
 
       <div class="hero-buttons">
-        <a class="btn" href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação" target="_blank">
+        <a
+          class="btn"
+          href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação"
+          target="_blank"
+        >
           Quero meu orçamento
         </a>
 
@@ -319,7 +481,7 @@
         </a>
       </div>
 
-      <div class="info-list">
+      <div class="hero-info">
         <p>• Promoção válida apenas para abril</p>
         <p>• Poucas vagas disponíveis</p>
         <p>• Pagamento facilitado em até 12x no cartão</p>
@@ -331,20 +493,26 @@
     <div class="container grid-2">
       <div class="card">
         <h2>Você não precisa apenas de fotos bonitas</h2>
-        <p>Você precisa de conteúdo que faça sua marca parecer mais profissional, gere confiança e aumente a percepção de valor do que você vende.</p>
-        <p>Muitas empresas têm bons produtos e bons serviços, mas não conseguem mostrar isso de forma profissional.</p>
-        <p>A FW cria materiais pensados para atrair mais clientes, vender mais, fortalecer a imagem da marca e gerar conteúdo para semanas.</p>
+        <p>
+          Você precisa de conteúdo que faça sua marca parecer mais profissional, gere confiança e aumente a percepção de valor do que você vende.
+        </p>
+        <p>
+          Muitas empresas têm bons produtos e bons serviços, mas não conseguem mostrar isso de forma profissional.
+        </p>
+        <p>
+          A FW cria materiais pensados para atrair mais clientes, vender mais, fortalecer a imagem da marca e gerar conteúdo para semanas.
+        </p>
       </div>
 
       <div class="card">
         <h2>O que um bom conteúdo pode fazer pela sua marca</h2>
-        <div class="grid-2">
-          <div class="item-card">Fazer sua marca parecer mais profissional</div>
-          <div class="item-card">Atrair mais clientes</div>
-          <div class="item-card">Aumentar percepção de valor</div>
-          <div class="item-card">Gerar mais autoridade</div>
-          <div class="item-card">Criar conteúdo para semanas</div>
-          <div class="item-card">Ajudar a vender mais</div>
+        <div class="grid-2" style="margin-top: 24px;">
+          <div class="item-card-dark">Fazer sua marca parecer mais profissional</div>
+          <div class="item-card-dark">Atrair mais clientes</div>
+          <div class="item-card-dark">Aumentar percepção de valor</div>
+          <div class="item-card-dark">Gerar mais autoridade</div>
+          <div class="item-card-dark">Criar conteúdo para semanas</div>
+          <div class="item-card-dark">Ajudar a vender mais</div>
         </div>
       </div>
     </div>
@@ -354,7 +522,7 @@
     <div class="container">
       <h2 class="section-title">Que tipo de conteúdo sua marca pode precisar hoje?</h2>
 
-      <div class="grid-3">
+      <div class="grid-3" style="margin-top: 40px;">
         <div class="item-card">Reels</div>
         <div class="item-card">Stories</div>
         <div class="item-card">Vídeo comercial</div>
@@ -371,12 +539,13 @@
     <div class="container">
       <h2 class="section-title">Pacotes</h2>
 
-      <div class="grid-2">
-        <div class="package-card">
+      <div class="grid-2 packages">
+        <div class="package-card essencial">
           <h3>Pacote Essencial</h3>
           <div class="price">A partir de R$ 890</div>
-          <p>Ideal para marcas que querem começar a fortalecer sua presença digital com conteúdo estratégico.</p>
-
+          <p>
+            Ideal para marcas que querem começar a fortalecer sua presença digital com conteúdo estratégico.
+          </p>
           <ul>
             <li>• 6 fotos profissionais</li>
             <li>• 1 vídeo institucional ou comercial</li>
@@ -388,11 +557,12 @@
           </ul>
         </div>
 
-        <div class="package-card">
+        <div class="package-card autoridade">
           <h3>Pacote Autoridade</h3>
           <div class="price">A partir de R$ 1.290</div>
-          <p>Ideal para marcas que querem parecer maiores, aumentar percepção de valor e gerar mais autoridade.</p>
-
+          <p>
+            Ideal para marcas que querem parecer maiores, aumentar percepção de valor e gerar mais autoridade.
+          </p>
           <ul>
             <li>• 15 fotos profissionais</li>
             <li>• 1 vídeo institucional</li>
@@ -412,7 +582,7 @@
     <div class="container">
       <h2 class="section-title">Serviços adicionais</h2>
 
-      <div class="grid-3">
+      <div class="grid-3" style="margin-top: 40px;">
         <div class="item-card">Drone</div>
         <div class="item-card">Mini estúdio portátil</div>
         <div class="item-card">Mesa giratória 360º</div>
@@ -430,7 +600,7 @@
   <section>
     <div class="container">
       <div class="cta-final">
-        <div class="hero-top-text">Poucas vagas disponíveis</div>
+        <p class="hero-top-text" style="margin-top: 0;">Poucas vagas disponíveis</p>
 
         <h2>Sua marca pode parecer muito maior com o conteúdo certo.</h2>
 
@@ -438,11 +608,15 @@
           Se você quer atrair mais clientes, vender mais e fortalecer sua presença digital, este é o momento de começar.
         </p>
 
-        <p>
+        <p class="subtext">
           Solicite seu orçamento e descubra quais conteúdos fazem mais sentido para o momento da sua marca.
         </p>
 
-        <a class="btn" href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação" target="_blank">
+        <a
+          class="btn"
+          href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação"
+          target="_blank"
+        >
           Quero transformar minha marca
         </a>
       </div>
@@ -452,6 +626,5 @@
   <footer>
     FW Comunicação • Conteúdo premium para marcas que querem vender mais, parecer maiores e ser lembradas.
   </footer>
-
 </body>
 </html>
