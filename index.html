@@ -1,127 +1,175 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FW Comunicação</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background: #07070a;
+      color: white;
+      overflow-x: hidden;
     }
 
-    .glow-hover {
+    .button-hover,
+    .card-hover,
+    .icon-box,
+    .package-card {
       transition: all 0.35s ease;
     }
 
-    .glow-hover:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 30px rgba(139, 92, 246, 0.18);
-    }
-
-    .card-hover {
-      transition: all 0.35s ease;
+    .button-hover:hover {
+      transform: translateY(-3px);
     }
 
     .card-hover:hover {
       transform: translateY(-6px);
-      border-color: rgba(167, 139, 250, 0.5);
+      border-color: rgba(167, 139, 250, 0.45);
       box-shadow: 0 0 35px rgba(139, 92, 246, 0.12);
     }
 
-    .pulse-glow {
-      animation: pulseGlow 4s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% {
-        opacity: 0.5;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.08);
-      }
+    .package-card:hover {
+      transform: translateY(-6px);
     }
 
     .icon-box {
       width: 48px;
       height: 48px;
+      min-width: 48px;
+      border-radius: 18px;
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      background: rgba(139, 92, 246, 0.10);
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 16px;
-      border: 1px solid rgba(167, 139, 250, 0.25);
-      background: rgba(139, 92, 246, 0.10);
       color: white;
       box-shadow: 0 0 18px rgba(139, 92, 246, 0.14);
-      flex-shrink: 0;
     }
 
-    .benefit-card:hover .icon-box,
-    .content-card:hover .icon-box {
-      transform: scale(1.05);
+    .content-card:hover .icon-box,
+    .benefit-card:hover .icon-box {
+      transform: scale(1.06);
       box-shadow: 0 0 24px rgba(139, 92, 246, 0.24);
-      transition: all 0.3s ease;
+    }
+
+    .pulse-glow {
+      animation: pulseGlow 4.5s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.45;
+      }
+      50% {
+        transform: scale(1.08);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.65rem !important;
+        line-height: 1.05 !important;
+      }
+
+      .section-title {
+        font-size: 2.05rem !important;
+        line-height: 1.08 !important;
+      }
     }
   </style>
 </head>
-<body class="bg-[#07070a] text-white selection:bg-violet-500/30">
+<body class="bg-[#07070a] text-white selection:bg-violet-500/30 selection:text-white">
 
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-md">
-    <div class="mx-auto max-w-7xl px-6 py-5 flex flex-col lg:flex-row items-center justify-between gap-5">
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-black/50 backdrop-blur-md">
+    <div class="mx-auto flex max-w-6xl flex-col gap-5 px-5 py-5 md:flex-row md:items-center md:justify-between">
       <div class="flex items-center gap-4">
-        <img src="https://i.imgur.com/DCIcnhI.png" alt="FW Comunicação" class="h-14 w-auto">
+        <img
+          src="https://i.imgur.com/DCIcnhI.png"
+          alt="FW Comunicação"
+          class="h-14 w-auto object-contain"
+        />
         <div>
-          <h2 class="uppercase tracking-[0.35em] text-sm font-semibold">FW Comunicação</h2>
-          <p class="text-zinc-400 text-sm mt-1">Conteúdo, posicionamento e resultado</p>
+          <h3 class="text-sm font-semibold uppercase tracking-[0.35em]">FW Comunicação</h3>
+          <p class="mt-1 text-sm text-zinc-400">Conteúdo, posicionamento e resultado</p>
         </div>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center gap-3">
-        <a href="https://www.instagram.com/fw_comunicacao/" target="_blank" class="border border-white/10 rounded-2xl px-5 py-3 text-zinc-300 hover:border-violet-500/40 hover:bg-white/5 transition-all duration-300">
-          @fw_comunicacao
+      <div class="flex flex-col gap-3 md:flex-row md:items-center">
+        <a
+          href="https://www.instagram.com/fw_comunicacao/"
+          target="_blank"
+          class="flex items-center justify-center gap-3 rounded-2xl border border-white/10 px-5 py-3 text-sm text-zinc-300 transition duration-300 hover:-translate-y-0.5 hover:border-violet-500/40 hover:bg-white/5"
+        >
+          <div class="flex h-8 w-8 items-center justify-center rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"></circle>
+            </svg>
+          </div>
+          <span>@fw_comunicacao</span>
         </a>
 
-        <a href="https://wa.me/5551994788548" target="_blank" class="bg-violet-600 hover:bg-violet-500 rounded-2xl px-7 py-3 font-semibold transition-all duration-300 glow-hover">
+        <a
+          href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação"
+          target="_blank"
+          class="rounded-2xl bg-violet-600 px-8 py-4 text-center text-lg font-semibold transition duration-300 hover:-translate-y-0.5 hover:bg-violet-500 hover:shadow-[0_0_30px_rgba(139,92,246,0.35)] button-hover"
+        >
           Solicitar orçamento
         </a>
       </div>
     </div>
   </header>
 
-  <section class="relative overflow-hidden py-24 px-6">
-    <div class="absolute top-10 left-10 w-64 h-64 bg-violet-600/10 rounded-full blur-3xl pulse-glow"></div>
-    <div class="absolute top-20 right-10 w-72 h-72 bg-fuchsia-500/10 rounded-full blur-3xl pulse-glow"></div>
+  <section class="relative overflow-hidden bg-[radial-gradient(circle_at_top,rgba(139,92,246,0.18),transparent_35%)] px-5 py-16 md:py-24">
+    <div class="pointer-events-none absolute inset-0 opacity-60">
+      <div class="pulse-glow absolute left-[8%] top-8 h-40 w-40 rounded-full bg-violet-500/10 blur-3xl"></div>
+      <div class="pulse-glow absolute right-[10%] top-16 h-48 w-48 rounded-full bg-fuchsia-500/10 blur-3xl" style="animation-delay: 800ms;"></div>
+    </div>
 
-    <div class="relative z-10 mx-auto max-w-7xl">
+    <div class="relative z-10 mx-auto max-w-6xl">
       <span class="inline-block rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-violet-200">
         Produção de conteúdo
       </span>
 
-      <p class="mt-8 text-sm uppercase tracking-[0.3em] text-violet-300">
+      <p class="mt-6 text-sm uppercase tracking-[0.3em] text-violet-200">
         Conteúdo que gera autoridade, percepção de valor e vendas
       </p>
 
-      <h1 class="mt-6 text-5xl md:text-7xl font-extrabold leading-tight tracking-tight max-w-6xl">
+      <h1 class="hero-title mt-6 max-w-5xl text-[3.2rem] font-bold leading-[1.03] tracking-[-0.04em] md:text-7xl">
         Conteúdo premium para marcas que querem vender mais, parecer maiores e ser lembradas.
       </h1>
 
-      <p class="mt-6 max-w-3xl text-xl text-zinc-300 leading-relaxed">
+      <p class="mt-6 max-w-3xl text-xl leading-relaxed text-zinc-300">
         Fotos e vídeos estratégicos para redes sociais, anúncios, posicionamento e fortalecimento da marca.
       </p>
 
-      <div class="mt-10 flex flex-col sm:flex-row gap-4">
-        <a href="https://wa.me/5551994788548" target="_blank" class="bg-violet-600 hover:bg-violet-500 rounded-2xl px-8 py-4 font-semibold text-lg transition-all duration-300 glow-hover text-center">
+      <div class="mt-10 flex flex-col gap-4 md:flex-row">
+        <a
+          href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação"
+          target="_blank"
+          class="rounded-2xl bg-violet-600 px-8 py-4 text-center text-lg font-semibold transition duration-300 hover:-translate-y-0.5 hover:bg-violet-500 hover:shadow-[0_0_30px_rgba(139,92,246,0.35)] button-hover"
+        >
           Quero meu orçamento
         </a>
 
-        <a href="#pacotes" class="border border-white/10 rounded-2xl px-8 py-4 font-semibold text-lg hover:border-violet-500/40 hover:bg-white/5 transition-all duration-300 text-center">
+        <a
+          href="#pacotes"
+          class="rounded-2xl border border-white/10 px-8 py-4 text-center text-lg font-semibold transition duration-300 hover:-translate-y-0.5 hover:border-violet-500/40 hover:bg-white/5 button-hover"
+        >
           Ver pacotes
         </a>
       </div>
@@ -134,311 +182,368 @@
     </div>
   </section>
 
-  <section class="px-6 py-20">
-    <div class="mx-auto max-w-7xl grid lg:grid-cols-2 gap-8">
+  <section class="px-5 py-14 md:py-20">
+    <div class="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
+
       <div class="rounded-[32px] border border-white/10 bg-white/[0.03] p-8 card-hover">
-        <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+        <h2 class="section-title text-[2.3rem] font-bold leading-[1.08] tracking-[-0.03em] md:text-5xl">
           Você não precisa apenas de fotos bonitas
         </h2>
 
-        <p class="mt-6 text-zinc-300 text-lg leading-relaxed">
+        <p class="mt-5 text-lg leading-relaxed text-zinc-300">
           Você precisa de conteúdo que faça sua marca parecer mais profissional, gere confiança e aumente a percepção de valor do que você vende.
         </p>
 
-        <p class="mt-4 text-zinc-300 text-lg leading-relaxed">
+        <p class="mt-4 text-lg leading-relaxed text-zinc-300">
           Muitas empresas têm bons produtos e bons serviços, mas não conseguem mostrar isso de forma profissional.
         </p>
 
-        <p class="mt-4 text-zinc-300 text-lg leading-relaxed">
+        <p class="mt-4 text-lg leading-relaxed text-zinc-300">
           A FW cria materiais pensados para atrair mais clientes, vender mais, fortalecer a imagem da marca e gerar conteúdo para semanas.
         </p>
       </div>
 
       <div class="rounded-[32px] border border-white/10 bg-white/[0.03] p-8 card-hover">
-        <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+        <h2 class="section-title text-[2.3rem] font-bold leading-[1.08] tracking-[-0.03em] md:text-5xl">
           O que um <span class="text-violet-400">bom conteúdo</span> pode fazer pela sua <span class="text-violet-400">marca</span>
         </h2>
 
-        <div class="mt-8 grid gap-4">
-          <div class="benefit-card flex items-center gap-4 border border-violet-500/20 rounded-2xl p-5 bg-black/20 card-hover">
+        <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+
+          <div class="benefit-card flex items-center gap-4 rounded-2xl border border-violet-500/20 bg-black/20 px-4 py-4 text-base text-zinc-200 card-hover">
             <div class="icon-box">
               <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3l7 3v5c0 4.5-2.7 7.7-7 10-4.3-2.3-7-5.5-7-10V6l7-3z" />
-                <path d="M12 8.2l.9 1.8 2 .3-1.45 1.42.34 2-1.79-.94-1.79.94.34-2L9.1 10.3l2-.3L12 8.2z" />
+                <path d="M12 3l7 3v5c0 4.5-2.7 7.7-7 10-4.3-2.3-7-5.5-7-10V6l7-3z"></path>
+                <path d="M12 8.2l.9 1.8 2 .3-1.45 1.42.34 2-1.79-.94-1.79.94.34-2L9.1 10.3l2-.3L12 8.2z"></path>
               </svg>
             </div>
             <span>Fazer sua marca parecer mais profissional</span>
           </div>
 
-          <div class="benefit-card flex items-center gap-4 border border-violet-500/20 rounded-2xl p-5 bg-black/20 card-hover">
+          <div class="benefit-card flex items-center gap-4 rounded-2xl border border-violet-500/20 bg-black/20 px-4 py-4 text-base text-zinc-200 card-hover">
             <div class="icon-box">
               <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="7.5" />
-                <circle cx="12" cy="12" r="3.5" />
-                <path d="M14.5 9.5l5-5" />
-                <path d="M16.5 4.5h3v3" />
-                <path d="M12 12l7.5-7.5" />
+                <circle cx="12" cy="12" r="7.5"></circle>
+                <circle cx="12" cy="12" r="3.5"></circle>
+                <path d="M14.5 9.5l5-5"></path>
+                <path d="M16.5 4.5h3v3"></path>
+                <path d="M12 12l7.5-7.5"></path>
               </svg>
             </div>
             <span>Atrair mais clientes</span>
           </div>
 
-          <div class="benefit-card flex items-center gap-4 border border-violet-500/20 rounded-2xl p-5 bg-black/20 card-hover">
+          <div class="benefit-card flex items-center gap-4 rounded-2xl border border-violet-500/20 bg-black/20 px-4 py-4 text-base text-zinc-200 card-hover">
             <div class="icon-box">
               <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 5h10l4 5-9 9-9-9 4-5z" />
-                <path d="M9 5l3 14 3-14" />
-                <path d="M3 10h18" />
+                <path d="M7 5h10l4 5-9 9-9-9 4-5z"></path>
+                <path d="M9 5l3 14 3-14"></path>
+                <path d="M3 10h18"></path>
               </svg>
             </div>
             <span>Aumentar percepção de valor</span>
           </div>
 
-          <div class="benefit-card flex items-center gap-4 border border-violet-500/20 rounded-2xl p-5 bg-black/20 card-hover">
+          <div class="benefit-card flex items-center gap-4 rounded-2xl border border-violet-500/20 bg-black/20 px-4 py-4 text-base text-zinc-200 card-hover">
             <div class="icon-box">
               <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M8 4h8v3a4 4 0 0 1-8 0V4z" />
-                <path d="M9 17h6" />
-                <path d="M10 14h4v3h-4z" />
-                <path d="M6 5H4a2 2 0 0 0 2 4h1" />
-                <path d="M18 5h2a2 2 0 0 1-2 4h-1" />
-                <path d="M12 10v4" />
+                <path d="M8 4h8v3a4 4 0 0 1-8 0V4z"></path>
+                <path d="M9 17h6"></path>
+                <path d="M10 14h4v3h-4z"></path>
+                <path d="M6 5H4a2 2 0 0 0 2 4h1"></path>
+                <path d="M18 5h2a2 2 0 0 1-2 4h-1"></path>
+                <path d="M12 10v4"></path>
               </svg>
             </div>
             <span>Gerar mais autoridade</span>
           </div>
 
-          <div class="benefit-card flex items-center gap-4 border border-violet-500/20 rounded-2xl p-5 bg-black/20 card-hover">
+          <div class="benefit-card flex items-center gap-4 rounded-2xl border border-violet-500/20 bg-black/20 px-4 py-4 text-base text-zinc-200 card-hover">
             <div class="icon-box">
               <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="5" width="18" height="16" rx="3" />
-                <path d="M8 3v4" />
-                <path d="M16 3v4" />
-                <path d="M3 9h18" />
-                <rect x="7" y="12" width="2.5" height="2.5" rx=".6" fill="currentColor" stroke="none" />
-                <rect x="11" y="12" width="2.5" height="2.5" rx=".6" fill="currentColor" stroke="none" />
-                <rect x="15" y="12" width="2.5" height="2.5" rx=".6" fill="currentColor" stroke="none" />
+                <rect x="3" y="5" width="18" height="16" rx="3"></rect>
+                <path d="M8 3v4"></path>
+                <path d="M16 3v4"></path>
+                <path d="M3 9h18"></path>
+                <rect x="7" y="12" width="2.5" height="2.5" rx=".6" fill="currentColor" stroke="none"></rect>
+                <rect x="11" y="12" width="2.5" height="2.5" rx=".6" fill="currentColor" stroke="none"></rect>
+                <rect x="15" y="12" width="2.5" height="2.5" rx=".6" fill="currentColor" stroke="none"></rect>
+                <rect x="7" y="16" width="2.5" height="2.5" rx=".6" fill="currentColor" stroke="none" opacity="0.85"></rect>
+                <rect x="11" y="16" width="2.5" height="2.5" rx=".6" fill="currentColor" stroke="none" opacity="0.85"></rect>
               </svg>
             </div>
             <span>Criar conteúdo para semanas</span>
           </div>
 
-          <div class="benefit-card flex items-center gap-4 border border-violet-500/20 rounded-2xl p-5 bg-black/20 card-hover">
+          <div class="benefit-card flex items-center gap-4 rounded-2xl border border-violet-500/20 bg-black/20 px-4 py-4 text-base text-zinc-200 card-hover">
             <div class="icon-box">
               <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19h16" />
-                <path d="M6 16l4-4 3 3 5-6" />
-                <path d="M15 9h3v3" />
+                <path d="M4 19h16"></path>
+                <path d="M6 16l4-4 3 3 5-6"></path>
+                <path d="M15 9h3v3"></path>
               </svg>
             </div>
             <span>Ajudar a vender mais</span>
           </div>
+
         </div>
       </div>
     </div>
   </section>
 
-  <section class="px-6 py-20">
-    <div class="mx-auto max-w-7xl">
-      <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+  <section class="px-5 py-14 md:py-20">
+    <div class="mx-auto max-w-6xl">
+      <h2 class="section-title text-[2.4rem] font-bold leading-[1.1] tracking-[-0.03em] md:text-5xl">
         Que tipo de <span class="text-violet-400">conteúdo</span> sua marca pode precisar hoje?
       </h2>
 
-      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+      <div class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
+
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">
           <div class="icon-box">
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="16" rx="3" />
-              <path d="M8 4l3 4" />
-              <path d="M13 4l3 4" />
-              <path d="M3 9h18" />
-              <path d="M10 12l5 3-5 3z" />
+              <rect x="3" y="4" width="18" height="16" rx="3"></rect>
+              <path d="M8 4l3 4"></path>
+              <path d="M13 4l3 4"></path>
+              <path d="M3 9h18"></path>
+              <path d="M10 12l5 3-5 3z"></path>
             </svg>
           </div>
           <span>Reels</span>
         </div>
 
-        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">
           <div class="icon-box">
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="7" y="3" width="10" height="18" rx="3" />
-              <circle cx="12" cy="12" r="3.2" />
+              <rect x="7" y="3" width="10" height="18" rx="3"></rect>
+              <circle cx="12" cy="12" r="3.2"></circle>
             </svg>
           </div>
           <span>Stories</span>
         </div>
 
-        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">
           <div class="icon-box">
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 12h7" />
-              <path d="M4 7h10" />
-              <path d="M4 17h6" />
-              <path d="M17 8l4 2v4l-4 2z" />
-              <rect x="11" y="7" width="6" height="10" rx="2" />
+              <path d="M4 12h7"></path>
+              <path d="M4 7h10"></path>
+              <path d="M4 17h6"></path>
+              <path d="M17 8l4 2v4l-4 2z"></path>
+              <rect x="11" y="7" width="6" height="10" rx="2"></rect>
             </svg>
           </div>
           <span>Vídeo comercial</span>
         </div>
 
-        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">
           <div class="icon-box">
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="6" width="14" height="12" rx="2" />
-              <path d="M17 10l4-2v8l-4-2z" />
+              <rect x="3" y="6" width="14" height="12" rx="2"></rect>
+              <path d="M17 10l4-2v8l-4-2z"></path>
             </svg>
           </div>
           <span>Vídeo institucional</span>
         </div>
 
-        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">
           <div class="icon-box">
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="4" y="4" width="16" height="16" rx="3" />
-              <path d="M4 10h16" />
-              <path d="M10 4v16" />
+              <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+              <path d="M4 10h16"></path>
+              <path d="M10 4v16"></path>
             </svg>
           </div>
           <span>Fotos para feed</span>
         </div>
 
-        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">
           <div class="icon-box">
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 18h4l9-9-4-4-9 9v4z" />
-              <path d="M13 5l4 4" />
+              <path d="M4 18h4l9-9-4-4-9 9v4z"></path>
+              <path d="M13 5l4 4"></path>
+              <path d="M18 14l2 2"></path>
             </svg>
           </div>
           <span>Conteúdo para anúncios</span>
         </div>
 
-        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">
           <div class="icon-box">
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="5" width="18" height="14" rx="2" />
-              <circle cx="12" cy="12" r="2.5" />
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="M8 5v14"></path>
+              <path d="M16 5v14"></path>
+              <circle cx="12" cy="12" r="2.5"></circle>
             </svg>
           </div>
           <span>Bastidores</span>
         </div>
 
-        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">
           <div class="icon-box">
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 18h10a4 4 0 0 0 4-4V8H9a4 4 0 0 0-4 4v6z" />
-              <path d="M9 8V6a2 2 0 0 1 2-2h6" />
+              <path d="M5 18h10a4 4 0 0 0 4-4V8H9a4 4 0 0 0-4 4v6z"></path>
+              <path d="M9 8V6a2 2 0 0 1 2-2h6"></path>
+              <path d="M8 12h.01"></path>
+              <path d="M12 12h.01"></path>
+              <path d="M16 12h.01"></path>
             </svg>
           </div>
           <span>Vídeo de depoimento</span>
         </div>
+
       </div>
     </div>
   </section>
 
-  <section id="pacotes" class="px-6 py-20">
-    <div class="mx-auto max-w-7xl">
-      <h2 class="text-4xl md:text-5xl font-bold">Pacotes</h2>
-      <p class="mt-4 text-zinc-400 text-lg max-w-2xl">
-        Estruturas pensadas para marcas que querem presença mais forte, mais autoridade e material estratégico para vender melhor.
-      </p>
+  <section id="pacotes" class="px-5 py-14 md:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="mb-10">
+        <h2 class="section-title text-[2.4rem] font-bold leading-[1.1] tracking-[-0.03em] md:text-5xl">
+          Pacotes
+        </h2>
+        <p class="mt-4 max-w-2xl text-lg leading-relaxed text-zinc-400">
+          Estruturas pensadas para marcas que querem presença mais forte, mais autoridade e material estratégico para vender melhor.
+        </p>
+      </div>
 
-      <div class="mt-12 grid lg:grid-cols-2 gap-8">
-        <div class="rounded-[32px] border border-violet-500/20 bg-white/[0.03] p-8 card-hover">
-          <span class="inline-flex rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs uppercase tracking-[0.25em] text-violet-200">
-            Pacote Essencial
-          </span>
+      <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
 
-          <h3 class="mt-6 text-5xl font-bold">R$ 890</h3>
+        <div class="package-card relative overflow-hidden rounded-[34px] border border-violet-500/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-8 shadow-[0_0_40px_rgba(139,92,246,0.08)] hover:shadow-[0_0_50px_rgba(139,92,246,0.14)]">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(139,92,246,0.12),transparent_42%)]"></div>
+          <div class="relative z-10">
+            <div class="inline-flex rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.28em] text-violet-200">
+              Pacote Essencial
+            </div>
 
-          <p class="mt-5 text-zinc-300 text-lg leading-relaxed">
-            Ideal para marcas que querem começar a fortalecer sua presença digital com conteúdo estratégico.
-          </p>
+            <div class="mt-6 text-sm uppercase tracking-[0.24em] text-zinc-500">
+              Investimento inicial
+            </div>
 
-          <ul class="mt-8 space-y-4 text-zinc-200 text-lg">
-            <li>• 6 fotos profissionais</li>
-            <li>• 1 vídeo institucional ou comercial</li>
-            <li>• 1 vídeo para reels ou anúncio</li>
-            <li>• Roteiro e direção de gravação</li>
-            <li>• Briefing da marca</li>
-            <li>• Edição profissional</li>
-            <li>• Material bruto incluso</li>
-          </ul>
+            <div class="mt-3 text-[3.1rem] font-bold leading-none text-white md:text-6xl">
+              R$ 890
+            </div>
 
-          <a href="https://wa.me/5551994788548" target="_blank" class="inline-block mt-8 border border-violet-500/30 bg-violet-500/10 rounded-2xl px-6 py-4 font-semibold transition-all duration-300 glow-hover">
-            Quero meu orçamento
-          </a>
+            <p class="mt-5 text-lg leading-relaxed text-zinc-300">
+              Ideal para marcas que querem começar a fortalecer sua presença digital com conteúdo estratégico.
+            </p>
+
+            <div class="mt-8 space-y-4 text-lg text-zinc-200">
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-violet-400"></span>6 fotos profissionais</div>
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-violet-400"></span>1 vídeo institucional ou comercial</div>
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-violet-400"></span>1 vídeo para reels ou anúncio</div>
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-violet-400"></span>Roteiro e direção de gravação</div>
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-violet-400"></span>Briefing da marca</div>
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-violet-400"></span>Edição profissional</div>
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-violet-400"></span>Material bruto incluso</div>
+            </div>
+
+            <a
+              href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação"
+              target="_blank"
+              class="mt-8 inline-block rounded-2xl border border-violet-500/30 bg-violet-500/10 px-6 py-4 text-base font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-violet-500/20 hover:shadow-[0_0_26px_rgba(139,92,246,0.18)] button-hover"
+            >
+              Quero meu orçamento
+            </a>
+          </div>
         </div>
 
-        <div class="rounded-[32px] border border-fuchsia-500/30 bg-fuchsia-500/5 p-8 card-hover">
-          <span class="inline-flex rounded-full border border-fuchsia-500/30 bg-fuchsia-500/10 px-3 py-1 text-xs uppercase tracking-[0.25em] text-fuchsia-200">
-            Pacote Autoridade
-          </span>
+        <div class="package-card relative overflow-hidden rounded-[34px] border border-fuchsia-500/30 bg-[linear-gradient(180deg,rgba(217,70,239,0.1),rgba(255,255,255,0.03))] p-8 shadow-[0_0_45px_rgba(217,70,239,0.09)] hover:shadow-[0_0_55px_rgba(217,70,239,0.16)]">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(217,70,239,0.14),transparent_40%)]"></div>
+          <div class="relative z-10">
+            <div class="inline-flex rounded-full border border-fuchsia-500/35 bg-fuchsia-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.28em] text-fuchsia-200">
+              Pacote Autoridade
+            </div>
 
-          <h3 class="mt-6 text-5xl font-bold">R$ 1.290</h3>
+            <div class="mt-6 text-sm uppercase tracking-[0.24em] text-zinc-500">
+              Mais completo
+            </div>
 
-          <p class="mt-5 text-zinc-300 text-lg leading-relaxed">
-            Ideal para marcas que querem parecer maiores, aumentar percepção de valor e gerar mais autoridade.
-          </p>
+            <div class="mt-3 text-[3.1rem] font-bold leading-none text-white md:text-6xl">
+              R$ 1.290
+            </div>
 
-          <ul class="mt-8 space-y-4 text-zinc-200 text-lg">
-            <li>• 15 fotos profissionais</li>
-            <li>• 1 vídeo institucional</li>
-            <li>• 1 vídeo de bastidores ou autoridade</li>
-            <li>• 1 vídeo para campanha ou anúncio</li>
-            <li>• Conteúdo pensado para até 3 semanas</li>
-            <li>• Material bruto incluso</li>
-          </ul>
+            <p class="mt-5 text-lg leading-relaxed text-zinc-300">
+              Ideal para marcas que querem parecer maiores, aumentar percepção de valor e gerar mais autoridade.
+            </p>
 
-          <a href="https://wa.me/5551994788548" target="_blank" class="inline-block mt-8 bg-fuchsia-500 hover:bg-fuchsia-400 rounded-2xl px-6 py-4 font-semibold transition-all duration-300 glow-hover">
-            Quero posicionar minha marca
-          </a>
+            <div class="mt-8 space-y-4 text-lg text-zinc-200">
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-fuchsia-400"></span>15 fotos profissionais</div>
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-fuchsia-400"></span>1 vídeo institucional</div>
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-fuchsia-400"></span>1 vídeo de bastidores ou autoridade</div>
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-fuchsia-400"></span>1 vídeo para reels, anúncio ou campanha</div>
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-fuchsia-400"></span>Roteiro e direção criativa</div>
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-fuchsia-400"></span>CTA pronta</div>
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-fuchsia-400"></span>Conteúdo pensado para até 3 semanas</div>
+              <div class="flex items-start gap-3"><span class="mt-2 h-2.5 w-2.5 rounded-full bg-fuchsia-400"></span>Material bruto incluso</div>
+            </div>
+
+            <a
+              href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação"
+              target="_blank"
+              class="mt-8 inline-block rounded-2xl bg-fuchsia-500 px-6 py-4 text-base font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-fuchsia-400 hover:shadow-[0_0_26px_rgba(217,70,239,0.22)] button-hover"
+            >
+              Quero posicionar minha marca
+            </a>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <section class="px-6 py-20">
-    <div class="mx-auto max-w-7xl">
-      <h2 class="text-4xl md:text-5xl font-bold">
+  <section class="px-5 py-14 md:py-20">
+    <div class="mx-auto max-w-6xl">
+      <h2 class="section-title text-[2.4rem] font-bold leading-[1.1] tracking-[-0.03em] md:text-5xl">
         Serviços <span class="text-violet-400">adicionais</span>
       </h2>
 
-      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Drone</div>
-        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Mini estúdio portátil</div>
-        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Mesa giratória 360º</div>
-        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Design gráfico</div>
-        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Locução</div>
-        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Entrega expressa</div>
-        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Conteúdo extra</div>
-        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Filmagem de depoimentos</div>
-        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Gestão de redes sociais</div>
-        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Gestão de tráfego</div>
+      <div class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">Drone</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">Mini estúdio portátil</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">Mesa giratória 360º</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">Design gráfico</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">Locução</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">Entrega expressa</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">Conteúdo extra</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">Filmagem de depoimentos</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">Gestão de redes sociais</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 text-xl card-hover">Gestão de tráfego</div>
       </div>
     </div>
   </section>
 
-  <section class="px-6 py-20">
-    <div class="mx-auto max-w-7xl rounded-[32px] border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-black p-10 text-center">
-      <p class="uppercase tracking-[0.3em] text-violet-300 text-sm">Poucas vagas disponíveis</p>
+  <section class="px-5 py-16 md:py-20">
+    <div class="mx-auto max-w-6xl rounded-[32px] border border-violet-500/20 bg-[linear-gradient(135deg,rgba(139,92,246,0.12),rgba(10,10,10,0.9))] p-8 text-center shadow-[0_0_40px_rgba(139,92,246,0.08)] md:p-14">
+      <p class="text-sm uppercase tracking-[0.3em] text-violet-200">
+        Poucas vagas disponíveis
+      </p>
 
-      <h2 class="mt-6 text-5xl md:text-6xl font-bold leading-tight">
+      <h2 class="section-title mt-6 text-[3rem] font-bold leading-[1.08] tracking-[-0.04em] md:text-6xl">
         Sua marca pode parecer muito maior com o conteúdo certo.
       </h2>
 
-      <p class="mt-6 text-zinc-300 text-lg max-w-3xl mx-auto leading-relaxed">
+      <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-zinc-300">
         Se você quer atrair mais clientes, vender mais e fortalecer sua presença digital, este é o momento de começar.
       </p>
 
-      <p class="mt-4 text-zinc-400 text-lg max-w-3xl mx-auto leading-relaxed">
+      <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-zinc-400">
         Solicite seu orçamento e descubra quais conteúdos fazem mais sentido para o momento da sua marca.
       </p>
 
-      <a href="https://wa.me/5551994788548" target="_blank" class="inline-block mt-8 bg-violet-600 hover:bg-violet-500 rounded-2xl px-8 py-4 text-lg font-semibold transition-all duration-300 glow-hover">
+      <a
+        href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação"
+        target="_blank"
+        class="mt-8 inline-block rounded-2xl bg-violet-600 px-8 py-4 text-lg font-semibold transition duration-300 hover:-translate-y-0.5 hover:bg-violet-500 hover:shadow-[0_0_30px_rgba(139,92,246,0.35)] button-hover"
+      >
         Quero transformar minha marca
       </a>
     </div>
   </section>
+
+  <footer class="border-t border-white/10 px-5 py-8 text-center text-sm text-zinc-400">
+    FW Comunicação • Conteúdo premium para marcas que querem vender mais, parecer maiores e ser lembradas.
+  </footer>
 
 </body>
 </html>
