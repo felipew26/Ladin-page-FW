@@ -1,487 +1,149 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FW Comunicação</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <style>
     html {
       scroll-behavior: smooth;
     }
 
     body {
-      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
       background: #07070a;
-      color: white;
-      line-height: 1.6;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    .glow-hover {
+      transition: all 0.35s ease;
     }
 
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+    .glow-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.18);
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(12px);
+    .card-hover {
+      transition: all 0.35s ease;
     }
 
-    .header-content {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      padding: 20px 0;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .logo-area img {
-      height: 56px;
-      width: auto;
-      object-fit: contain;
-    }
-
-    .logo-area h3 {
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.35em;
-    }
-
-    .logo-area p {
-      margin-top: 4px;
-      font-size: 14px;
-      color: #a1a1aa;
-    }
-
-    .btn {
-      display: inline-block;
-      border: none;
-      border-radius: 18px;
-      background: #7c3aed;
-      padding: 16px 32px;
-      color: white;
-      font-size: 18px;
-      font-weight: 700;
-      text-align: center;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background: #8b5cf6;
-    }
-
-    .btn-outline {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: transparent;
-    }
-
-    .btn-outline:hover {
-      border-color: rgba(139, 92, 246, 0.4);
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .hero {
-      background: radial-gradient(circle at top, rgba(139, 92, 246, 0.18), transparent 35%);
-      padding: 64px 0;
-    }
-
-    .tag {
-      display: inline-block;
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      border-radius: 999px;
-      background: rgba(139, 92, 246, 0.1);
-      padding: 10px 16px;
-      color: #ddd6fe;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-    }
-
-    .hero-top-text {
-      margin-top: 24px;
-      color: #ddd6fe;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-    }
-
-    h1 {
-      margin-top: 24px;
-      max-width: 1000px;
-      font-size: 3.2rem;
-      font-weight: 700;
-      line-height: 1.03;
-      letter-spacing: -0.04em;
-    }
-
-    .hero-description {
-      margin-top: 24px;
-      max-width: 760px;
-      color: #d4d4d8;
-      font-size: 20px;
-      line-height: 1.7;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-top: 40px;
-    }
-
-    .hero-info {
-      margin-top: 32px;
-      color: #a1a1aa;
-      font-size: 14px;
-    }
-
-    .hero-info p + p {
-      margin-top: 8px;
-    }
-
-    section {
-      padding: 56px 0;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    .card {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 32px;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 32px;
-    }
-
-    .card h2 {
-      font-size: 2.3rem;
-      font-weight: 700;
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-    }
-
-    .card p {
-      margin-top: 16px;
-      color: #d4d4d8;
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    .item-card {
-      border: 1px solid rgba(139, 92, 246, 0.2);
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 24px;
-      color: #e4e4e7;
-      font-size: 20px;
-    }
-
-    .item-card-dark {
-      border: 1px solid rgba(139, 92, 246, 0.2);
-      border-radius: 18px;
-      background: rgba(0, 0, 0, 0.2);
-      padding: 16px;
-      color: #e4e4e7;
-      font-size: 16px;
-    }
-
-    .section-title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-    }
-
-    .packages {
-      margin-top: 40px;
+    .card-hover:hover {
+      transform: translateY(-6px);
+      border-color: rgba(167, 139, 250, 0.45);
+      box-shadow: 0 0 35px rgba(139, 92, 246, 0.12);
     }
 
     .package-card {
-      border-radius: 32px;
-      padding: 32px;
-      box-shadow: 0 0 30px rgba(139, 92, 246, 0.08);
+      transition: all 0.35s ease;
     }
 
-    .package-card.essencial {
-      border: 1px solid rgba(139, 92, 246, 0.2);
-      background: rgba(255, 255, 255, 0.04);
+    .package-card:hover {
+      transform: translateY(-6px);
     }
 
-    .package-card.autoridade {
-      border: 1px solid rgba(217, 70, 239, 0.3);
-      background: linear-gradient(180deg, rgba(217, 70, 239, 0.08), rgba(255, 255, 255, 0.03));
+    .pulse-glow {
+      animation: pulseGlow 4s ease-in-out infinite;
     }
 
-    .package-card h3 {
-      font-size: 2rem;
-      font-weight: 700;
-    }
-
-    .price {
-      margin-top: 16px;
-      font-size: 3rem;
-      font-weight: 700;
-      line-height: 1;
-    }
-
-    .package-card.essencial .price {
-      color: #c4b5fd;
-    }
-
-    .package-card.autoridade .price {
-      color: #f0abfc;
-    }
-
-    .package-card p {
-      margin-top: 24px;
-      color: #d4d4d8;
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    .package-card ul {
-      margin-top: 32px;
-      list-style: none;
-    }
-
-    .package-card li {
-      margin-bottom: 16px;
-      color: #e4e4e7;
-      font-size: 18px;
-    }
-
-    .cta-final {
-      border: 1px solid rgba(139, 92, 246, 0.2);
-      border-radius: 32px;
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(10, 10, 10, 0.9));
-      padding: 32px;
-      text-align: center;
-    }
-
-    .cta-final h2 {
-      margin-top: 24px;
-      font-size: 3rem;
-      font-weight: 700;
-      line-height: 1.08;
-      letter-spacing: -0.04em;
-    }
-
-    .cta-final p {
-      max-width: 760px;
-      margin: 24px auto 0;
-      color: #d4d4d8;
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    .cta-final .subtext {
-      margin-top: 16px;
-      color: #a1a1aa;
-    }
-
-    .cta-final .btn {
-      margin-top: 32px;
-    }
-
-    footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 32px 20px;
-      color: #a1a1aa;
-      font-size: 14px;
-      text-align: center;
-    }
-
-    @media (min-width: 768px) {
-      .header-content {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+    @keyframes pulseGlow {
+      0%, 100% {
+        opacity: 0.45;
+        transform: scale(1);
       }
-
-      .header-btn {
-        width: auto;
-      }
-
-      h1 {
-        font-size: 5.5rem;
-      }
-
-      .hero-buttons {
-        flex-direction: row;
-      }
-
-      .grid-2 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .grid-3 {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .section-title {
-        font-size: 3rem;
-      }
-
-      .card h2 {
-        font-size: 3rem;
-      }
-
-      .package-card h3 {
-        font-size: 3rem;
-      }
-
-      .price {
-        font-size: 3.75rem;
-      }
-
-      .cta-final {
-        padding: 56px;
-      }
-
-      .cta-final h2 {
-        font-size: 4.2rem;
+      50% {
+        opacity: 1;
+        transform: scale(1.08);
       }
     }
 
-    @media (max-width: 900px) {
-      h1 {
-        font-size: 3.6rem;
-        line-height: 1.02;
-      }
-
-      .section-title {
-        font-size: 2.2rem;
-        line-height: 1.15;
-      }
-
-      .cta-final h2 {
-        font-size: 2.8rem;
-        line-height: 1.15;
-      }
-
-      .price {
-        font-size: 3.2rem;
-        line-height: 1.1;
-      }
+    .icon-box {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      border: 1px solid rgba(167, 139, 250, 0.25);
+      background: rgba(139, 92, 246, 0.10);
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+      color: white;
     }
 
-    @media (max-width: 560px) {
-      h1 {
-        font-size: 2.9rem;
-      }
-
-      .hero-description {
-        font-size: 18px;
-      }
-
-      .section-title,
-      .card h2 {
-        font-size: 2rem;
-      }
-
-      .package-card h3 {
-        font-size: 1.9rem;
-      }
-
-      .price {
-        font-size: 2.8rem;
-      }
-
-      .cta-final h2 {
-        font-size: 2.4rem;
-      }
-
-      .item-card {
-        font-size: 18px;
-      }
+    .benefit-card:hover .icon-box,
+    .content-card:hover .icon-box {
+      transform: scale(1.08);
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.25);
     }
   </style>
 </head>
-<body>
-  <header>
-    <div class="container header-content">
-      <div class="logo-area">
-        <img src="https://i.imgur.com/DCIcnhI.png" alt="FW Comunicação" />
+<body class="bg-[#07070a] text-white selection:bg-violet-500/30 selection:text-white">
+
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-md">
+    <div class="mx-auto max-w-7xl px-6 py-5 flex flex-col lg:flex-row items-center justify-between gap-5">
+      <div class="flex items-center gap-4">
+        <img src="https://i.imgur.com/DCIcnhI.png" alt="FW Comunicação" class="h-14 w-auto">
         <div>
-          <h3>FW Comunicação</h3>
-          <p>Conteúdo, posicionamento e resultado</p>
+          <h2 class="uppercase tracking-[0.35em] text-sm font-semibold">FW Comunicação</h2>
+          <p class="text-zinc-400 text-sm mt-1">Conteúdo, posicionamento e resultado</p>
         </div>
       </div>
 
-      <a
-        class="btn header-btn"
-        href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação"
-        target="_blank"
-      >
-        Solicitar orçamento
-      </a>
+      <div class="flex flex-col sm:flex-row items-center gap-3">
+        <a href="https://www.instagram.com/fw_comunicacao/" target="_blank" class="border border-white/10 rounded-2xl px-5 py-3 text-zinc-300 hover:border-violet-500/40 hover:bg-white/5 transition-all duration-300 flex items-center gap-3">
+          <svg viewBox="0 0 24 24" class="h-4 w-4 text-violet-300" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"></circle>
+          </svg>
+          <span>@fw_comunicacao</span>
+        </a>
+
+        <a href="https://wa.me/5551994788548" target="_blank" class="bg-violet-600 hover:bg-violet-500 rounded-2xl px-7 py-3 font-semibold transition-all duration-300 glow-hover">
+          Solicitar orçamento
+        </a>
+      </div>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container">
-      <span class="tag">Produção de conteúdo</span>
+  <section class="relative overflow-hidden py-24 px-6">
+    <div class="absolute top-10 left-10 w-64 h-64 bg-violet-600/10 rounded-full blur-3xl pulse-glow"></div>
+    <div class="absolute top-20 right-10 w-72 h-72 bg-fuchsia-500/10 rounded-full blur-3xl pulse-glow"></div>
 
-      <p class="hero-top-text">
+    <div class="relative z-10 mx-auto max-w-7xl">
+      <span class="inline-block rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-violet-200">
+        Produção de conteúdo
+      </span>
+
+      <p class="mt-8 text-sm uppercase tracking-[0.3em] text-violet-300">
         Conteúdo que gera autoridade, percepção de valor e vendas
       </p>
 
-      <h1>
+      <h1 class="mt-6 text-5xl md:text-7xl font-extrabold leading-tight tracking-tight max-w-6xl">
         Conteúdo premium para marcas que querem vender mais, parecer maiores e ser lembradas.
       </h1>
 
-      <p class="hero-description">
+      <p class="mt-6 max-w-3xl text-xl text-zinc-300 leading-relaxed">
         Fotos e vídeos estratégicos para redes sociais, anúncios, posicionamento e fortalecimento da marca.
       </p>
 
-      <div class="hero-buttons">
-        <a
-          class="btn"
-          href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação"
-          target="_blank"
-        >
+      <div class="mt-10 flex flex-col sm:flex-row gap-4">
+        <a href="https://wa.me/5551994788548" target="_blank" class="bg-violet-600 hover:bg-violet-500 rounded-2xl px-8 py-4 font-semibold text-lg transition-all duration-300 glow-hover text-center">
           Quero meu orçamento
         </a>
 
-        <a class="btn btn-outline" href="#pacotes">
+        <a href="#pacotes" class="border border-white/10 rounded-2xl px-8 py-4 font-semibold text-lg hover:border-violet-500/40 hover:bg-white/5 transition-all duration-300 text-center">
           Ver pacotes
         </a>
       </div>
 
-      <div class="hero-info">
+      <div class="mt-8 space-y-2 text-sm text-zinc-400">
         <p>• Promoção válida apenas para abril</p>
         <p>• Poucas vagas disponíveis</p>
         <p>• Pagamento facilitado em até 12x no cartão</p>
@@ -489,64 +151,229 @@
     </div>
   </section>
 
-  <section>
-    <div class="container grid-2">
-      <div class="card">
-        <h2>Você não precisa apenas de fotos bonitas</h2>
-        <p>
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-7xl grid lg:grid-cols-2 gap-8">
+      <div class="rounded-[32px] border border-white/10 bg-white/[0.03] p-8 card-hover">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+          Você não precisa apenas de fotos bonitas
+        </h2>
+
+        <p class="mt-6 text-zinc-300 text-lg leading-relaxed">
           Você precisa de conteúdo que faça sua marca parecer mais profissional, gere confiança e aumente a percepção de valor do que você vende.
         </p>
-        <p>
-          Muitas empresas têm bons produtos e bons serviços, mas não conseguem mostrar isso de forma profissional.
+
+        <p class="mt-4 text-zinc-300 text-lg leading-relaxed">
+          Muitas marcas têm bons produtos e bons serviços, mas não conseguem mostrar isso de forma profissional.
         </p>
-        <p>
+
+        <p class="mt-4 text-zinc-300 text-lg leading-relaxed">
           A FW cria materiais pensados para atrair mais clientes, vender mais, fortalecer a imagem da marca e gerar conteúdo para semanas.
         </p>
       </div>
 
-      <div class="card">
-        <h2>O que um bom conteúdo pode fazer pela sua marca</h2>
-        <div class="grid-2" style="margin-top: 24px;">
-          <div class="item-card-dark">Fazer sua marca parecer mais profissional</div>
-          <div class="item-card-dark">Atrair mais clientes</div>
-          <div class="item-card-dark">Aumentar percepção de valor</div>
-          <div class="item-card-dark">Gerar mais autoridade</div>
-          <div class="item-card-dark">Criar conteúdo para semanas</div>
-          <div class="item-card-dark">Ajudar a vender mais</div>
+      <div class="rounded-[32px] border border-white/10 bg-white/[0.03] p-8 card-hover">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+          O que um bom conteúdo pode fazer pela sua marca
+        </h2>
+
+        <div class="mt-8 grid gap-4">
+          <div class="benefit-card flex items-center gap-4 border border-violet-500/20 rounded-2xl p-5 bg-black/20 card-hover">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l7 3v5c0 4.5-2.7 7.7-7 10-4.3-2.3-7-5.5-7-10V6l7-3z"></path>
+                <path d="M12 8.2l.9 1.8 2 .3-1.45 1.42.34 2-1.79-.94-1.79.94.34-2L9.1 10.3l2-.3L12 8.2z"></path>
+              </svg>
+            </div>
+            <span>Fazer sua marca parecer mais profissional</span>
+          </div>
+
+          <div class="benefit-card flex items-center gap-4 border border-violet-500/20 rounded-2xl p-5 bg-black/20 card-hover">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="7.5"></circle>
+                <circle cx="12" cy="12" r="3.5"></circle>
+                <path d="M14.5 9.5l5-5"></path>
+                <path d="M16.5 4.5h3v3"></path>
+                <path d="M12 12l7.5-7.5"></path>
+              </svg>
+            </div>
+            <span>Atrair mais clientes</span>
+          </div>
+
+          <div class="benefit-card flex items-center gap-4 border border-violet-500/20 rounded-2xl p-5 bg-black/20 card-hover">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 5h10l4 5-9 9-9-9 4-5z"></path>
+                <path d="M9 5l3 14 3-14"></path>
+                <path d="M3 10h18"></path>
+              </svg>
+            </div>
+            <span>Aumentar percepção de valor</span>
+          </div>
+
+          <div class="benefit-card flex items-center gap-4 border border-violet-500/20 rounded-2xl p-5 bg-black/20 card-hover">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 4h8v3a4 4 0 0 1-8 0V4z"></path>
+                <path d="M9 17h6"></path>
+                <path d="M10 14h4v3h-4z"></path>
+                <path d="M6 5H4a2 2 0 0 0 2 4h1"></path>
+                <path d="M18 5h2a2 2 0 0 1-2 4h-1"></path>
+                <path d="M12 10v4"></path>
+              </svg>
+            </div>
+            <span>Gerar mais autoridade</span>
+          </div>
+
+          <div class="benefit-card flex items-center gap-4 border border-violet-500/20 rounded-2xl p-5 bg-black/20 card-hover">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="16" rx="3"></rect>
+                <path d="M8 3v4"></path>
+                <path d="M16 3v4"></path>
+                <path d="M3 9h18"></path>
+                <rect x="7" y="12" width="2.5" height="2.5" rx=".6" fill="currentColor" stroke="none"></rect>
+                <rect x="11" y="12" width="2.5" height="2.5" rx=".6" fill="currentColor" stroke="none"></rect>
+                <rect x="15" y="12" width="2.5" height="2.5" rx=".6" fill="currentColor" stroke="none"></rect>
+              </svg>
+            </div>
+            <span>Criar conteúdo para semanas</span>
+          </div>
+
+          <div class="benefit-card flex items-center gap-4 border border-violet-500/20 rounded-2xl p-5 bg-black/20 card-hover">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19h16"></path>
+                <path d="M6 16l4-4 3 3 5-6"></path>
+                <path d="M15 9h3v3"></path>
+              </svg>
+            </div>
+            <span>Ajudar a vender mais</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <h2 class="section-title">Que tipo de conteúdo sua marca pode precisar hoje?</h2>
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-7xl">
+      <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+        Que tipo de conteúdo sua marca pode precisar hoje?
+      </h2>
 
-      <div class="grid-3" style="margin-top: 40px;">
-        <div class="item-card">Reels</div>
-        <div class="item-card">Stories</div>
-        <div class="item-card">Vídeo comercial</div>
-        <div class="item-card">Vídeo institucional</div>
-        <div class="item-card">Fotos para feed</div>
-        <div class="item-card">Conteúdo para anúncios</div>
-        <div class="item-card">Bastidores</div>
-        <div class="item-card">Vídeo de depoimento</div>
+      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="16" rx="3"></rect>
+              <path d="M8 4l3 4"></path>
+              <path d="M13 4l3 4"></path>
+              <path d="M3 9h18"></path>
+              <path d="M10 12l5 3-5 3z"></path>
+            </svg>
+          </div>
+          <span>Reels</span>
+        </div>
+
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="7" y="3" width="10" height="18" rx="3"></rect>
+              <circle cx="12" cy="12" r="3.2"></circle>
+            </svg>
+          </div>
+          <span>Stories</span>
+        </div>
+
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 12h7"></path>
+              <path d="M4 7h10"></path>
+              <path d="M4 17h6"></path>
+              <path d="M17 8l4 2v4l-4 2z"></path>
+              <rect x="11" y="7" width="6" height="10" rx="2"></rect>
+            </svg>
+          </div>
+          <span>Vídeo comercial</span>
+        </div>
+
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="6" width="14" height="12" rx="2"></rect>
+              <path d="M17 10l4-2v8l-4-2z"></path>
+            </svg>
+          </div>
+          <span>Vídeo institucional</span>
+        </div>
+
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+              <path d="M4 10h16"></path>
+              <path d="M10 4v16"></path>
+            </svg>
+          </div>
+          <span>Fotos para feed</span>
+        </div>
+
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 18h4l9-9-4-4-9 9v4z"></path>
+              <path d="M13 5l4 4"></path>
+            </svg>
+          </div>
+          <span>Conteúdo para anúncios</span>
+        </div>
+
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <circle cx="12" cy="12" r="2.5"></circle>
+            </svg>
+          </div>
+          <span>Bastidores</span>
+        </div>
+
+        <div class="content-card flex items-center gap-4 rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 18h10a4 4 0 0 0 4-4V8H9a4 4 0 0 0-4 4v6z"></path>
+              <path d="M9 8V6a2 2 0 0 1 2-2h6"></path>
+            </svg>
+          </div>
+          <span>Vídeo de depoimento</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="pacotes">
-    <div class="container">
-      <h2 class="section-title">Pacotes</h2>
+  <section id="pacotes" class="px-6 py-20">
+    <div class="mx-auto max-w-7xl">
+      <h2 class="text-4xl md:text-5xl font-bold">Pacotes</h2>
+      <p class="mt-4 text-zinc-400 text-lg max-w-2xl">
+        Estruturas pensadas para marcas que querem presença mais forte, mais autoridade e material estratégico para vender melhor.
+      </p>
 
-      <div class="grid-2 packages">
-        <div class="package-card essencial">
-          <h3>Pacote Essencial</h3>
-          <div class="price">A partir de R$ 890</div>
-          <p>
+      <div class="mt-12 grid lg:grid-cols-2 gap-8">
+        <div class="package-card rounded-[34px] border border-violet-500/20 bg-white/[0.03] p-8 shadow-[0_0_40px_rgba(139,92,246,0.08)] hover:shadow-[0_0_50px_rgba(139,92,246,0.14)]">
+          <span class="inline-flex rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs uppercase tracking-[0.25em] text-violet-200">
+            Pacote Essencial
+          </span>
+
+          <p class="mt-6 text-sm uppercase tracking-[0.24em] text-zinc-500">Investimento inicial</p>
+
+          <h3 class="mt-3 text-5xl md:text-6xl font-bold text-white">R$ 890</h3>
+
+          <p class="mt-5 text-zinc-300 text-lg leading-relaxed">
             Ideal para marcas que querem começar a fortalecer sua presença digital com conteúdo estratégico.
           </p>
-          <ul>
+
+          <ul class="mt-8 space-y-4 text-zinc-200 text-lg">
             <li>• 6 fotos profissionais</li>
             <li>• 1 vídeo institucional ou comercial</li>
             <li>• 1 vídeo para reels ou anúncio</li>
@@ -555,15 +382,26 @@
             <li>• Edição profissional</li>
             <li>• Material bruto incluso</li>
           </ul>
+
+          <a href="https://wa.me/5551994788548" target="_blank" class="inline-block mt-8 border border-violet-500/30 bg-violet-500/10 rounded-2xl px-6 py-4 font-semibold transition-all duration-300 glow-hover">
+            Quero meu orçamento
+          </a>
         </div>
 
-        <div class="package-card autoridade">
-          <h3>Pacote Autoridade</h3>
-          <div class="price">A partir de R$ 1.290</div>
-          <p>
+        <div class="package-card rounded-[34px] border border-fuchsia-500/30 bg-fuchsia-500/5 p-8 shadow-[0_0_45px_rgba(217,70,239,0.09)] hover:shadow-[0_0_55px_rgba(217,70,239,0.16)]">
+          <span class="inline-flex rounded-full border border-fuchsia-500/30 bg-fuchsia-500/10 px-3 py-1 text-xs uppercase tracking-[0.25em] text-fuchsia-200">
+            Pacote Autoridade
+          </span>
+
+          <p class="mt-6 text-sm uppercase tracking-[0.24em] text-zinc-500">Mais completo</p>
+
+          <h3 class="mt-3 text-5xl md:text-6xl font-bold text-white">R$ 1.290</h3>
+
+          <p class="mt-5 text-zinc-300 text-lg leading-relaxed">
             Ideal para marcas que querem parecer maiores, aumentar percepção de valor e gerar mais autoridade.
           </p>
-          <ul>
+
+          <ul class="mt-8 space-y-4 text-zinc-200 text-lg">
             <li>• 15 fotos profissionais</li>
             <li>• 1 vídeo institucional</li>
             <li>• 1 vídeo de bastidores ou autoridade</li>
@@ -573,58 +411,57 @@
             <li>• Conteúdo pensado para até 3 semanas</li>
             <li>• Material bruto incluso</li>
           </ul>
+
+          <a href="https://wa.me/5551994788548" target="_blank" class="inline-block mt-8 bg-fuchsia-500 hover:bg-fuchsia-400 rounded-2xl px-6 py-4 font-semibold transition-all duration-300 glow-hover">
+            Quero posicionar minha marca
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <h2 class="section-title">Serviços adicionais</h2>
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-7xl">
+      <h2 class="text-4xl md:text-5xl font-bold">
+        Serviços <span class="text-violet-400">adicionais</span>
+      </h2>
 
-      <div class="grid-3" style="margin-top: 40px;">
-        <div class="item-card">Drone</div>
-        <div class="item-card">Mini estúdio portátil</div>
-        <div class="item-card">Mesa giratória 360º</div>
-        <div class="item-card">Design gráfico</div>
-        <div class="item-card">Locução</div>
-        <div class="item-card">Entrega expressa</div>
-        <div class="item-card">Conteúdo extra</div>
-        <div class="item-card">Filmagem de depoimentos</div>
-        <div class="item-card">Gestão de redes sociais</div>
-        <div class="item-card">Gestão de tráfego</div>
+      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Drone</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Mini estúdio portátil</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Mesa giratória 360º</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Design gráfico</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Locução</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Entrega expressa</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Conteúdo extra</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Filmagem de depoimentos</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Gestão de redes sociais</div>
+        <div class="rounded-3xl border border-violet-500/20 bg-white/[0.03] p-6 card-hover">Gestão de tráfego</div>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <div class="cta-final">
-        <p class="hero-top-text" style="margin-top: 0;">Poucas vagas disponíveis</p>
+  <section class="px-6 py-20">
+    <div class="mx-auto max-w-7xl rounded-[32px] border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-black p-10 text-center shadow-[0_0_40px_rgba(139,92,246,0.08)]">
+      <p class="uppercase tracking-[0.3em] text-violet-300 text-sm">Poucas vagas disponíveis</p>
 
-        <h2>Sua marca pode parecer muito maior com o conteúdo certo.</h2>
+      <h2 class="mt-6 text-5xl md:text-6xl font-bold leading-tight">
+        Sua marca pode parecer muito maior com o conteúdo certo.
+      </h2>
 
-        <p>
-          Se você quer atrair mais clientes, vender mais e fortalecer sua presença digital, este é o momento de começar.
-        </p>
+      <p class="mt-6 text-zinc-300 text-lg max-w-3xl mx-auto leading-relaxed">
+        Se você quer atrair mais clientes, vender mais e fortalecer sua presença digital, este é o momento de começar.
+      </p>
 
-        <p class="subtext">
-          Solicite seu orçamento e descubra quais conteúdos fazem mais sentido para o momento da sua marca.
-        </p>
+      <p class="mt-4 text-zinc-400 text-lg max-w-3xl mx-auto leading-relaxed">
+        Solicite seu orçamento e descubra quais conteúdos fazem mais sentido para o momento da sua marca.
+      </p>
 
-        <a
-          class="btn"
-          href="https://wa.me/5551994788548?text=Olá,%20quero%20solicitar%20um%20orçamento%20da%20FW%20Comunicação"
-          target="_blank"
-        >
-          Quero transformar minha marca
-        </a>
-      </div>
+      <a href="https://wa.me/5551994788548" target="_blank" class="inline-block mt-8 bg-violet-600 hover:bg-violet-500 rounded-2xl px-8 py-4 text-lg font-semibold transition-all duration-300 glow-hover">
+        Quero transformar minha marca
+      </a>
     </div>
   </section>
 
-  <footer>
-    FW Comunicação • Conteúdo premium para marcas que querem vender mais, parecer maiores e ser lembradas.
-  </footer>
 </body>
 </html>
